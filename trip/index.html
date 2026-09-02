@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f7f4ef">
+<meta name="description" content="2026年9月5日〜6日、水上温泉と軽井沢、二日間のしおり。">
+<title>水上・軽井沢 ふたつの日 — 旅のしおり</title>
+<style>
+:root{
+  --bg:#f7f4ef;
+  --surface:#fffdfa;
+  --ink:#232019;
+  --ink-2:#6d675e;
+  --ink-3:#9a938a;
+  --line:#e2dcd2;
+  --accent:#3d5a6c;
+  --accent-soft:#e7edf1;
+  --font-mincho:"Hiragino Mincho ProN","HiraMinProN-W3","Yu Mincho",YuMincho,"Noto Serif JP","Songti SC",serif;
+  --font-gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,-apple-system,sans-serif;
+  --font-num:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --radius:2px;
+}
+/* 2日目：軽井沢。生成りから涼しい白へ。書体も明朝からゴシックへ。 */
+body[data-theme="2"]{
+  --bg:#f5f6f6;
+  --surface:#ffffff;
+  --ink:#1d1f20;
+  --ink-2:#63696b;
+  --ink-3:#969b9d;
+  --line:#e4e7e7;
+  --accent:#5d6b62;
+  --accent-soft:#eaeeeb;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#191714;--surface:#211e1a;--ink:#ece7de;--ink-2:#a49c90;--ink-3:#7a736a;
+    --line:#332f29;--accent:#9dbacd;--accent-soft:#26302f;
+  }
+  body[data-theme="2"]{
+    --bg:#141616;--surface:#1c1e1e;--ink:#e6e9e8;--ink-2:#9aa1a0;--ink-3:#6f7675;
+    --line:#2b2e2e;--accent:#a8c2b3;--accent-soft:#232827;
+  }
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-mincho);
+  font-size:16px;
+  line-height:1.9;
+  letter-spacing:.02em;
+  transition:background-color .6s ease,color .6s ease;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+body[data-theme="2"]{font-family:var(--font-gothic);letter-spacing:.04em}
+.wrap{max-width:640px;margin:0 auto;padding:0 22px}
+
+/* ── 表紙 ───────────────────────────── */
+header.cover{padding:64px 0 40px;text-align:left}
+.cover .eyebrow{
+  font-family:var(--font-num);font-size:11px;letter-spacing:.28em;
+  color:var(--ink-3);text-transform:uppercase;margin:0 0 26px
+}
+.cover h1{
+  margin:0;font-size:30px;font-weight:400;line-height:1.55;letter-spacing:.08em;
+}
+.cover h1 small{display:block;font-size:15px;color:var(--ink-2);letter-spacing:.14em;margin-top:12px}
+.cover .dates{
+  margin:30px 0 0;font-family:var(--font-num);font-size:13px;letter-spacing:.16em;color:var(--ink-2)
+}
+.cover .weather{
+  margin:8px 0 0;font-size:13px;color:var(--ink-3);letter-spacing:.06em
+}
+.rule{height:1px;background:var(--line);border:0;margin:0}
+
+/* ── いま／カウントダウン ───────────── */
+.status{
+  margin:34px 0 0;padding:18px 20px;background:var(--surface);
+  border:1px solid var(--line);border-radius:var(--radius);
+}
+.status .label{
+  font-family:var(--font-num);font-size:10px;letter-spacing:.24em;
+  color:var(--ink-3);text-transform:uppercase;display:block;margin-bottom:6px
+}
+.status .main{font-size:19px;line-height:1.6;letter-spacing:.06em;margin:0}
+.status .sub{font-size:13px;color:var(--ink-2);margin:6px 0 0;letter-spacing:.04em}
+
+/* ── 日タブ ─────────────────────────── */
+nav.days{display:flex;gap:0;margin:48px 0 0;border-bottom:1px solid var(--line)}
+nav.days button{
+  flex:1;min-height:60px;background:none;border:0;border-bottom:2px solid transparent;
+  margin-bottom:-1px;font:inherit;font-size:15px;letter-spacing:.1em;color:var(--ink-3);
+  cursor:pointer;padding:16px 8px;transition:color .3s,border-color .3s;
+}
+nav.days button .n{font-family:var(--font-num);font-size:11px;letter-spacing:.2em;display:block;margin-bottom:2px}
+nav.days button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+.day-note{
+  margin:26px 0 0;font-size:13.5px;line-height:1.95;color:var(--ink-2);letter-spacing:.05em
+}
+.day-meta{
+  margin:14px 0 0;font-family:var(--font-num);font-size:11px;letter-spacing:.18em;color:var(--ink-3)
+}
+
+/* ── タイムライン ───────────────────── */
+ol.timeline{list-style:none;margin:34px 0 0;padding:0}
+li.item{position:relative;padding:0 0 0 62px;margin:0}
+li.item::before{ /* 縦線 */
+  content:"";position:absolute;left:15px;top:0;bottom:0;width:1px;background:var(--line)
+}
+li.item:first-child::before{top:16px}
+li.item:last-child::before{bottom:auto;height:16px}
+li.item .dot{
+  position:absolute;left:11px;top:12px;width:9px;height:9px;border-radius:50%;
+  background:var(--bg);border:1px solid var(--ink-3);transition:all .3s
+}
+li.item .time{
+  position:absolute;left:-2px;top:5px;font-family:var(--font-num);font-size:12px;
+  letter-spacing:.04em;color:var(--ink-2);width:0;
+}
+li.item .row{padding:6px 0 22px}
+li.item .name{font-size:17px;letter-spacing:.06em;margin:0;line-height:1.6}
+li.item .move{font-size:12px;color:var(--ink-3);margin:3px 0 0;letter-spacing:.06em;font-family:var(--font-num)}
+
+/* 時刻を左端に出すため、行全体を組み直す */
+li.item{display:block;padding-left:0}
+li.item::before{left:58px}
+li.item .dot{left:54px}
+li.item .time{position:static;display:block;float:left;width:44px;padding-top:8px;text-align:right}
+li.item .row{margin-left:76px;padding:6px 0 24px}
+li.item::after{content:"";display:block;clear:both}
+
+li.item.is-past .name,li.item.is-past .time{color:var(--ink-3)}
+li.item.is-past .dot{border-color:var(--line)}
+li.item.is-now .dot{
+  background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 5px var(--accent-soft)
+}
+li.item.is-now .name{color:var(--accent)}
+li.item.is-now .time{color:var(--accent)}
+
+/* ── スポット詳細 ───────────────────── */
+details.spot{margin:10px 0 0;border-top:1px solid var(--line)}
+details.spot summary{
+  list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;
+  font-size:12.5px;letter-spacing:.14em;color:var(--ink-3);font-family:var(--font-num)
+}
+details.spot summary::-webkit-details-marker{display:none}
+details.spot summary::after{content:"＋";margin-left:auto;font-size:13px}
+details.spot[open] summary::after{content:"−"}
+details.spot .body{padding:2px 0 18px}
+dl.facts{margin:0;font-size:13.5px;line-height:1.9}
+dl.facts div{display:flex;gap:14px;padding:5px 0;border-bottom:1px solid var(--line)}
+dl.facts div:last-child{border-bottom:0}
+dl.facts dt{flex:0 0 68px;color:var(--ink-3);font-size:12px;letter-spacing:.08em;padding-top:2px}
+dl.facts dd{margin:0;flex:1}
+dl.facts a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+.tag{
+  display:inline-block;font-size:11px;letter-spacing:.1em;color:var(--accent);
+  background:var(--accent-soft);padding:2px 9px;border-radius:2px;margin-top:8px
+}
+.links{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.links a{
+  flex:1;min-width:104px;min-height:52px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);
+  color:var(--ink);text-decoration:none;font-size:13.5px;letter-spacing:.1em
+}
+
+/* ── 汎用セクション ─────────────────── */
+section.block{margin:64px 0 0}
+section.block > h2{
+  font-size:13px;font-weight:400;letter-spacing:.24em;color:var(--ink-3);
+  font-family:var(--font-num);text-transform:uppercase;margin:0 0 4px
+}
+section.block > .ja{font-size:19px;letter-spacing:.1em;margin:0 0 20px}
+
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:18px 20px;margin-top:14px
+}
+.card h3{margin:0 0 8px;font-size:14px;font-weight:400;letter-spacing:.12em;color:var(--ink-2)}
+.card p{margin:0;font-size:13.5px;line-height:1.95;color:var(--ink-2)}
+
+/* ── 持ち物 ─────────────────────────── */
+.checkgroup{margin-top:26px}
+.checkgroup h3{
+  margin:0 0 4px;font-size:12px;font-weight:400;letter-spacing:.18em;color:var(--ink-3)
+}
+label.check{
+  display:flex;align-items:center;gap:14px;min-height:56px;padding:6px 2px;
+  border-bottom:1px solid var(--line);cursor:pointer;font-size:15px;letter-spacing:.04em
+}
+label.check input{
+  appearance:none;-webkit-appearance:none;flex:0 0 20px;width:20px;height:20px;
+  border:1px solid var(--ink-3);border-radius:50%;background:none;margin:0;position:relative
+}
+label.check input:checked{background:var(--accent);border-color:var(--accent)}
+label.check input:checked::after{
+  content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+  border:solid var(--surface);border-width:0 1.5px 1.5px 0;transform:rotate(42deg)
+}
+label.check input:checked + span{color:var(--ink-3);text-decoration:line-through;text-decoration-color:var(--line)}
+label.check span small{display:block;font-size:12px;color:var(--ink-3);letter-spacing:.04em}
+.reset{
+  margin-top:18px;background:none;border:0;font:inherit;font-size:12px;letter-spacing:.12em;
+  color:var(--ink-3);cursor:pointer;padding:12px 0;text-decoration:underline;text-underline-offset:4px
+}
+
+/* ── 連絡先 ─────────────────────────── */
+a.contact{
+  display:flex;align-items:center;min-height:64px;padding:12px 4px;gap:12px;
+  border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);
+  font-size:15px;letter-spacing:.05em
+}
+a.contact .num{margin-left:auto;font-family:var(--font-num);font-size:14px;color:var(--accent);letter-spacing:.06em}
+a.contact.blank{color:var(--ink-3)}
+a.contact.blank .num{color:var(--ink-3)}
+
+footer{margin:80px 0 0;padding:30px 0 60px;border-top:1px solid var(--line);text-align:center}
+footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-height:2}
+
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body data-theme="1">
+
+<div class="wrap">
+
+  <header class="cover">
+    <p class="eyebrow">Itinerary</p>
+    <h1>水上と軽井沢、<br>ふたつの日。<small>和にひたる一日、余白をあるく一日</small></h1>
+    <p class="dates">2026 . 09 . 05 SAT — 09 . 06 SUN</p>
+    <p class="weather">両日とも雨の予報。行き先はぜんぶ屋根の下にしてあります。</p>
+  </header>
+
+  <div class="status" id="status" role="status" aria-live="polite">
+    <span class="label" id="statusLabel">Countdown</span>
+    <p class="main" id="statusMain">—</p>
+    <p class="sub" id="statusSub"></p>
+  </div>
+
+  <nav class="days" role="tablist" aria-label="日程">
+    <button type="button" role="tab" id="tab1" aria-controls="day1" aria-selected="true">
+      <span class="n">DAY 1</span>9月5日（土）水上
+    </button>
+    <button type="button" role="tab" id="tab2" aria-controls="day2" aria-selected="false">
+      <span class="n">DAY 2</span>9月6日（日）軽井沢
+    </button>
+  </nav>
+
+  <!-- ══ DAY 1 ══════════════════════════════════ -->
+  <div id="day1" role="tabpanel" aria-labelledby="tab1">
+    <p class="day-note">関越をのぼって、石造りの城をひとまわり。<br>日が暮れるころには温泉に浸かっています。</p>
+    <p class="day-meta">吉祥寺 → 水上温泉 ／ 約191km</p>
+
+    <ol class="timeline">
+      <li class="item" data-start="2026-09-05T10:00">
+        <span class="dot"></span><span class="time">10:00</span>
+        <div class="row">
+          <p class="name">吉祥寺 出発</p>
+          <p class="move">to 練馬IC ／ 約13km・35分</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T10:35">
+        <span class="dot"></span><span class="time">10:35</span>
+        <div class="row">
+          <p class="name">練馬IC から関越道へ</p>
+          <p class="move">to 赤城高原SA ／ 約120km・85分</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T12:00" data-end="2026-09-05T13:00">
+        <span class="dot"></span><span class="time">12:00</span>
+        <div class="row">
+          <p class="name">赤城高原SA で昼食</p>
+          <p class="move">60分 ／ 13:00 出発</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>所在</dt><dd>関越自動車道 下り線（赤城IC〜沼田IC）</dd></div>
+                <div><dt>ひとこと</dt><dd>晴れていれば谷川連峰が見えるはずの場所。雨なら、あたたかいものを。</dd></div>
+              </dl>
+              <span class="tag">屋内</span>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T13:15">
+        <span class="dot"></span><span class="time">13:15</span>
+        <div class="row">
+          <p class="name">沼田IC を出る</p>
+          <p class="move">to ロックハート城 ／ 約17km・25分</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T13:40" data-end="2026-09-05T15:40">
+        <span class="dot"></span><span class="time">13:40</span>
+        <div class="row">
+          <p class="name">ロックハート城</p>
+          <p class="move">滞在 2時間 ／ 15:40 出発</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>住所</dt><dd>群馬県吾妻郡高山村中山5583-1</dd></div>
+                <div><dt>電話</dt><dd><a href="tel:0279632101">0279-63-2101</a></dd></div>
+                <div><dt>時間</dt><dd>9:00〜17:00（最終入場 16:30）</dd></div>
+                <div><dt>予約</dt><dd>不要 ／ 駐車場あり</dd></div>
+                <div><dt>雨の日は</dt><dd>広い屋外パークなので、城内・チャペル・ショップの屋根のある場所を中心に。無理はしません。</dd></div>
+              </dl>
+              <span class="tag">一部 屋内</span>
+              <div class="links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=大理石村ロックハート城">地図をひらく</a>
+                <a href="tel:0279632101">電話する</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T16:30" data-end="2026-09-05T18:00">
+        <span class="dot"></span><span class="time">16:30</span>
+        <div class="row">
+          <p class="name">水上温泉 着・チェックイン</p>
+          <p class="move">約35km・50分 ／ そのまま湯へ</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>宿</dt><dd>（宿名を記入）</dd></div>
+                <div><dt>電話</dt><dd>（宿の電話番号を記入）</dd></div>
+                <div><dt>すごし方</dt><dd>温泉、部屋、なにもしない時間。</dd></div>
+              </dl>
+              <span class="tag">屋内</span>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-05T18:00">
+        <span class="dot"></span><span class="time">18:00</span>
+        <div class="row">
+          <p class="name">夕食</p>
+          <p class="move">時刻は宿に確認のうえ確定</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="card">
+      <h3>雨が強かったら</h3>
+      <p>ロックハート城を1時間半に切りあげて、16:00には宿に入ります。屋外のテーマパークなので、そこはあっさり判断します。</p>
+    </div>
+  </div>
+
+  <!-- ══ DAY 2 ══════════════════════════════════ -->
+  <div id="day2" role="tabpanel" aria-labelledby="tab2" hidden>
+    <p class="day-note">星野エリアにまるごと半日。<br>テラスと、教会と、美術館。ぜんぶ歩ける距離にあります。</p>
+    <p class="day-meta">水上温泉 → 軽井沢 → 吉祥寺 ／ 約309km</p>
+
+    <ol class="timeline">
+      <li class="item" data-start="2026-09-06T09:30">
+        <span class="dot"></span><span class="time">9:30</span>
+        <div class="row">
+          <p class="name">宿 出発</p>
+          <p class="move">to 月夜野IC ／ 約12km・20分</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T09:50">
+        <span class="dot"></span><span class="time">9:50</span>
+        <div class="row">
+          <p class="name">月夜野IC から関越道・上信越道へ</p>
+          <p class="move">to 碓氷軽井沢IC ／ 約134km・105分</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T11:15" data-end="2026-09-06T13:15">
+        <span class="dot"></span><span class="time">11:15</span>
+        <div class="row">
+          <p class="name">ハルニレテラス</p>
+          <p class="move">昼食とカフェ ／ 2時間</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>所在</dt><dd>長野県北佐久郡軽井沢町星野（星野エリア）</dd></div>
+                <div><dt>駐車場</dt><dd>あり</dd></div>
+                <div><dt>雨の日は</dt><dd>ウッドデッキに屋根があり、屋内の店も多い。傘をさす時間はほとんどありません。</dd></div>
+              </dl>
+              <span class="tag">雨に強い</span>
+              <div class="links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=ハルニレテラス">地図をひらく</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T13:15" data-end="2026-09-06T13:45">
+        <span class="dot"></span><span class="time">13:15</span>
+        <div class="row">
+          <p class="name">石の教会（内村鑑三記念堂）</p>
+          <p class="move">30分 ／ ハルニレテラスから徒歩圏</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>所在</dt><dd>長野県北佐久郡軽井沢町星野</dd></div>
+                <div><dt>見学</dt><dd>無料。ただし挙式が入っている時間帯は入れません（当日の状況次第）。</dd></div>
+                <div><dt>雨の日は</dt><dd>半地下の空間。雨のほうが、内を流れる水がきれいに見えます。</dd></div>
+              </dl>
+              <span class="tag">雨に強い</span>
+              <div class="links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=石の教会 内村鑑三記念堂">地図をひらく</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T14:00" data-end="2026-09-06T16:30">
+        <span class="dot"></span><span class="time">14:00</span>
+        <div class="row">
+          <p class="name">軽井沢ニューアートミュージアム</p>
+          <p class="move">2時間30分 ／ 約7km・15分</p>
+          <details class="spot">
+            <summary>DETAIL</summary>
+            <div class="body">
+              <dl class="facts">
+                <div><dt>住所</dt><dd>長野県北佐久郡軽井沢町軽井沢1151-5</dd></div>
+                <div><dt>電話</dt><dd><a href="tel:0267468691">0267-46-8691</a></dd></div>
+                <div><dt>時間</dt><dd>開館時間は事前に確認して確定させます</dd></div>
+                <div><dt>1階</dt><dd>ギャラリー3室、ブックカフェ、イタリアン、ショップ</dd></div>
+                <div><dt>2階</dt><dd>企画展示 6室</dd></div>
+                <div><dt>庭</dt><dd>隈研吾のチャペル、オトニエルのハート型のオブジェ</dd></div>
+                <div><dt>めやす</dt><dd>2階の企画展に60分、1階のカフェとショップに90分</dd></div>
+              </dl>
+              <span class="tag">完全に屋内</span>
+              <div class="links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=軽井沢ニューアートミュージアム">地図をひらく</a>
+                <a href="tel:0267468691">電話する</a>
+              </div>
+            </div>
+          </details>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T16:45">
+        <span class="dot"></span><span class="time">16:45</span>
+        <div class="row">
+          <p class="name">碓氷軽井沢IC から帰路へ</p>
+          <p class="move">約144km・125分（渋滞込み）</p>
+        </div>
+      </li>
+
+      <li class="item" data-start="2026-09-06T19:45">
+        <span class="dot"></span><span class="time">19:45</span>
+        <div class="row">
+          <p class="name">吉祥寺 着</p>
+          <p class="move">20:15 ごろまでを見込み</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="card">
+      <h3>帰り道のこと</h3>
+      <p>日曜の夕方、関越の上り（高坂SA〜所沢IC）は16時から20時が混みます。上の到着時刻は、その渋滞を見込んだ数字です。あせらず。</p>
+    </div>
+
+    <div class="card">
+      <h3>もし晴れたら</h3>
+      <p>予報がはずれて曇りどまりなら、白糸の滝を足す案があります。ただし美術館の時間を削ることになるので、その場で相談。</p>
+    </div>
+  </div>
+
+  <!-- ══ 移動 ══════════════════════════════════ -->
+  <section class="block">
+    <h2>Route</h2>
+    <p class="ja">道のこと</p>
+    <div class="card">
+      <h3>使うインターチェンジ</h3>
+      <p>
+        1日目 ── 練馬IC → 沼田IC（関越道）<br>
+        2日目 ── 月夜野IC → 碓氷軽井沢IC（関越道・上信越道）<br>
+        帰路 ── 碓氷軽井沢IC → 練馬IC
+      </p>
+    </div>
+    <div class="card">
+      <h3>ガソリン</h3>
+      <p>二日間の総走行距離は約500km。満タンで出発して、帰り道でもう一度入れます。</p>
+    </div>
+    <div class="card">
+      <h3>下道は使いません</h3>
+      <p>北軽井沢まわりの国道146号は標高1,000mを超える連続カーブ。雨と霧の日に通る道ではないので、高速でまわります。</p>
+    </div>
+  </section>
+
+  <!-- ══ 持ち物 ═════════════════════════════════ -->
+  <section class="block">
+    <h2>Packing</h2>
+    <p class="ja">持ちもの</p>
+
+    <div class="checkgroup">
+      <h3>雨のしたく</h3>
+      <label class="check"><input type="checkbox" data-k="p1"><span>長い傘 2本<small>折りたたみでは足りません</small></span></label>
+      <label class="check"><input type="checkbox" data-k="p2"><span>濡れてもいい靴</span></label>
+      <label class="check"><input type="checkbox" data-k="p3"><span>替えの靴下</span></label>
+      <label class="check"><input type="checkbox" data-k="p4"><span>タオル 1〜2枚</span></label>
+      <label class="check"><input type="checkbox" data-k="p5"><span>傘を入れるビニール袋<small>軽自動車なので、濡れた傘の置き場が要ります</small></span></label>
+    </div>
+
+    <div class="checkgroup">
+      <h3>寒さのしたく</h3>
+      <label class="check"><input type="checkbox" data-k="p6"><span>羽織るもの<small>軽井沢は標高約1,000m。雨の9月は15〜18℃まで下がります</small></span></label>
+    </div>
+
+    <div class="checkgroup">
+      <h3>そのほか</h3>
+      <label class="check"><input type="checkbox" data-k="p7"><span>ETCカード<small>車載器に挿してあるか、期限は切れていないか</small></span></label>
+      <label class="check"><input type="checkbox" data-k="p8"><span>現金<small>現金しか使えない場所があります</small></span></label>
+      <label class="check"><input type="checkbox" data-k="p9"><span>ロックハート城の割引券<small>印刷か、スマートフォンの画面で</small></span></label>
+      <label class="check"><input type="checkbox" data-k="p10"><span>常備薬</span></label>
+      <label class="check"><input type="checkbox" data-k="p11"><span>モバイルバッテリー</span></label>
+    </div>
+
+    <button type="button" class="reset" id="resetChecks">チェックをぜんぶ消す</button>
+  </section>
+
+  <!-- ══ 連絡先 ═════════════════════════════════ -->
+  <section class="block">
+    <h2>Contact</h2>
+    <p class="ja">連絡先</p>
+    <a class="contact blank" href="#"><span>水上温泉の宿</span><span class="num">（記入）</span></a>
+    <a class="contact" href="tel:0279632101"><span>ロックハート城</span><span class="num">0279-63-2101</span></a>
+    <a class="contact" href="tel:0267468691"><span>軽井沢ニューアートミュージアム</span><span class="num">0267-46-8691</span></a>
+    <a class="contact blank" href="#"><span>自動車保険 事故受付</span><span class="num">（記入）</span></a>
+  </section>
+
+  <footer>
+    <p>2026 . 09 . 05 — 09 . 06<br>MINAKAMI &amp; KARUIZAWA</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var JST = "+09:00";
+  var body = document.body;
+  var tabs = [document.getElementById("tab1"), document.getElementById("tab2")];
+  var panels = [document.getElementById("day1"), document.getElementById("day2")];
+
+  function parse(s){ return new Date(s + ":00" + JST); }
+
+  /* ── 日タブ ───────────────────────── */
+  function selectDay(i, scroll){
+    tabs.forEach(function(t, n){ t.setAttribute("aria-selected", n === i ? "true" : "false"); });
+    panels.forEach(function(p, n){ p.hidden = n !== i; });
+    body.setAttribute("data-theme", String(i + 1));
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", i === 0 ? "#f7f4ef" : "#f5f6f6");
+    if (scroll) panels[i].scrollIntoView({block:"start", behavior:"smooth"});
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener("click", function(){ selectDay(i, false); });
+  });
+
+  /* ── いま／つぎ ───────────────────── */
+  var items = [].slice.call(document.querySelectorAll("li.item")).map(function(el){
+    return { el: el, start: parse(el.dataset.start), end: el.dataset.end ? parse(el.dataset.end) : null,
+             name: el.querySelector(".name").textContent.trim() };
+  });
+  // 終了時刻がない項目は、次の項目の開始時刻までとみなす
+  items.forEach(function(it, i){
+    if (!it.end) it.end = items[i+1] ? items[i+1].start : new Date(it.start.getTime() + 60*60*1000);
+  });
+
+  var TRIP_START = parse("2026-09-05T10:00");
+  var TRIP_END   = parse("2026-09-06T20:15");
+
+  var elLabel = document.getElementById("statusLabel");
+  var elMain  = document.getElementById("statusMain");
+  var elSub   = document.getElementById("statusSub");
+
+  function hhmm(d){
+    return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0");
+  }
+
+  function tick(){
+    var now = new Date();
+    var current = null, next = null;
+
+    items.forEach(function(it){
+      it.el.classList.remove("is-now","is-past");
+      if (now >= it.end) it.el.classList.add("is-past");
+      else if (now >= it.start){ it.el.classList.add("is-now"); current = it; }
+      else if (!next) next = it;
+    });
+
+    if (now < TRIP_START){
+      var days = Math.ceil((TRIP_START - now) / 86400000);
+      elLabel.textContent = "Countdown";
+      elMain.textContent = days > 0 ? "あと " + days + " 日" : "まもなく出発";
+      elSub.textContent = "9月5日（土）10:00 吉祥寺 出発";
+    } else if (now > TRIP_END){
+      elLabel.textContent = "Thank you";
+      elMain.textContent = "おつかれさまでした";
+      elSub.textContent = "またどこかへ。";
+    } else if (current){
+      elLabel.textContent = "Now";
+      elMain.textContent = current.name;
+      elSub.textContent = next ? "つぎは " + hhmm(next.start) + "　" + next.name : "";
+    } else if (next){
+      elLabel.textContent = "Next";
+      elMain.textContent = next.name;
+      elSub.textContent = hhmm(next.start) + " から";
+    }
+
+    // 当日は自動でその日のタブを開く（手動で切り替えたあとは尊重する）
+    if (!body.dataset.userPicked){
+      var d = now.getFullYear() + "-" + String(now.getMonth()+1).padStart(2,"0") + "-" + String(now.getDate()).padStart(2,"0");
+      if (d === "2026-09-06") selectDay(1, false);
+    }
+  }
+  tabs.forEach(function(t){ t.addEventListener("click", function(){ body.dataset.userPicked = "1"; }); });
+
+  tick();
+  setInterval(tick, 30000);
+  document.addEventListener("visibilitychange", function(){ if (!document.hidden) tick(); });
+
+  /* ── 持ち物チェック（端末に保存） ───── */
+  var KEY = "trip-2026-09-packing";
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e){}
+
+  var boxes = [].slice.call(document.querySelectorAll('label.check input'));
+  boxes.forEach(function(b){
+    b.checked = !!saved[b.dataset.k];
+    b.addEventListener("change", function(){
+      saved[b.dataset.k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch(e){}
+    });
+  });
+  document.getElementById("resetChecks").addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    saved = {};
+    try { localStorage.removeItem(KEY); } catch(e){}
+  });
+
+  /* ── 圏外でも開けるように ───────────── */
+  if ("serviceWorker" in navigator){
+    window.addEventListener("load", function(){
+      navigator.serviceWorker.register("./sw.js").catch(function(){});
+    });
+  }
+})();
+</script>
+</body>
+</html>
