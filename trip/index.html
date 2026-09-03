@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#f7f4ef">
 <meta name="description" content="2026年9月5日〜6日、水上温泉と軽井沢、二日間のしおり。">
-<title>水上・軽井沢 ふたつの日 — 旅のしおり</title>
+<title>水上温泉/軽井沢旅行 — 旅のしおり</title>
 <style>
 :root{
   --bg:#f7f4ef;
@@ -20,6 +20,11 @@
   --font-gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",system-ui,-apple-system,sans-serif;
   --font-num:"Helvetica Neue",Helvetica,Arial,sans-serif;
   --radius:2px;
+  /* 1日目：温泉と自然のパステル（水浅葱・淡藍・桜鼠・若草・砂） */
+  --p1:#a8ccc9; --p2:#c6d5ea; --p3:#e3cfd6; --p4:#cfdcc0; --p5:#e6d9bd;
+  /* 2日目：軽井沢の自然（苔・空・白樺・若葉・霧） */
+  --n1:143,174,134; --n2:169,196,212; --n3:201,185,156; --n4:185,207,158; --n5:211,196,216;
+  --orn:.85;
 }
 /* 2日目：軽井沢。生成りから涼しい白へ。書体も明朝からゴシックへ。 */
 body[data-theme="2"]{
@@ -36,6 +41,7 @@ body[data-theme="2"]{
   :root{
     --bg:#191714;--surface:#211e1a;--ink:#ece7de;--ink-2:#a49c90;--ink-3:#7a736a;
     --line:#332f29;--accent:#9dbacd;--accent-soft:#26302f;
+    --orn:.34;
   }
   body[data-theme="2"]{
     --bg:#141616;--surface:#1c1e1e;--ink:#e6e9e8;--ink-2:#9aa1a0;--ink-3:#6f7675;
@@ -231,6 +237,50 @@ a.contact.blank .num{color:var(--ink-3)}
 footer{margin:80px 0 0;padding:30px 0 60px;border-top:1px solid var(--line);text-align:center}
 footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-height:2}
 
+/* ── ところどころの意匠 ───────────────────
+   1日目は和の幾何学模様をパステルで、2日目は自然の色を水彩のように。
+   どちらも地の色には手を触れず、面積を絞って置いている。          */
+.ornament{height:38px;margin:30px 0 -6px;opacity:var(--orn)}
+.status,.card{position:relative;isolation:isolate;overflow:hidden}
+.status::before,.card::before{
+  content:"";position:absolute;top:0;right:0;width:132px;height:104px;
+  z-index:-1;opacity:var(--orn);pointer-events:none;
+  -webkit-mask-image:radial-gradient(132px 104px at 100% 0,#000 10%,transparent 76%);
+  mask-image:radial-gradient(132px 104px at 100% 0,#000 10%,transparent 76%);
+}
+
+/* 1日目 ── 青海波・七宝・籠目 */
+body[data-theme="1"] .ornament{
+  height:34px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='24' viewBox='0 0 48 24'%3E%3Cg fill='none' stroke-width='1.3'%3E%3Cg stroke='%23a8ccc9'%3E%3Cpath d='M-24 24a24 24 0 0 1 48 0'/%3E%3Cpath d='M0 24a24 24 0 0 1 48 0'/%3E%3Cpath d='M24 24a24 24 0 0 1 48 0'/%3E%3C/g%3E%3Cg stroke='%23c6d5ea'%3E%3Cpath d='M-17 24a17 17 0 0 1 34 0'/%3E%3Cpath d='M7 24a17 17 0 0 1 34 0'/%3E%3Cpath d='M31 24a17 17 0 0 1 34 0'/%3E%3C/g%3E%3Cg stroke='%23e3cfd6'%3E%3Cpath d='M-10 24a10 10 0 0 1 20 0'/%3E%3Cpath d='M14 24a10 10 0 0 1 20 0'/%3E%3Cpath d='M38 24a10 10 0 0 1 20 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-position:center bottom;background-size:68px 34px;
+}
+body[data-theme="1"] .status::before{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Cg fill='none' stroke='%23a8ccc9' stroke-width='1'%3E%3Ccircle cx='0' cy='0' r='13'/%3E%3Ccircle cx='26' cy='0' r='13'/%3E%3Ccircle cx='0' cy='26' r='13'/%3E%3Ccircle cx='26' cy='26' r='13'/%3E%3Ccircle cx='13' cy='13' r='13'/%3E%3C/g%3E%3C/svg%3E");
+}
+body[data-theme="1"] .card::before{
+  background-image:
+    repeating-linear-gradient(60deg,var(--p1) 0 1px,transparent 1px 13px),
+    repeating-linear-gradient(-60deg,var(--p2) 0 1px,transparent 1px 13px),
+    repeating-linear-gradient(0deg,var(--p3) 0 1px,transparent 1px 11px);
+}
+body[data-theme="1"] .tag{background:#e9f1f0;color:#4a6f6c}
+body[data-theme="1"] li.item.is-now .dot{box-shadow:0 0 0 5px #dcebe9}
+
+/* 2日目 ── 水彩のにじみ */
+body[data-theme="2"] .ornament{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='640' height='44' viewBox='0 0 640 44'><defs><filter id='w' x='-25%' y='-40%' width='150%' height='180%'> <feTurbulence type='fractalNoise' baseFrequency='0.055' numOctaves='3' seed='7' result='n'/> <feDisplacementMap in='SourceGraphic' in2='n' scale='16' xChannelSelector='R' yChannelSelector='G'/> <feGaussianBlur stdDeviation='1.6'/></filter></defs><g filter='url(%23w)' opacity='0.62'><ellipse cx='46' cy='26' rx='42' ry='12' fill='%237ba36e'/><ellipse cx='128' cy='19' rx='38' ry='11' fill='%238fb5cc'/><ellipse cx='196' cy='28' rx='30' ry='10' fill='%23c9ae82'/><ellipse cx='268' cy='20' rx='44' ry='12' fill='%23a8c97f'/><ellipse cx='352' cy='27' rx='34' ry='11' fill='%23c3aecd'/><ellipse cx='426' cy='19' rx='40' ry='12' fill='%237ba36e'/><ellipse cx='500' cy='27' rx='32' ry='10' fill='%238fb5cc'/><ellipse cx='566' cy='20' rx='36' ry='11' fill='%23a8c97f'/><ellipse cx='622' cy='26' rx='30' ry='10' fill='%23c9ae82'/></g></svg>");background-repeat:no-repeat;background-size:100% 100%}
+body[data-theme="2"] .status::before,
+body[data-theme="2"] .card::before{background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='132' height='104' viewBox='0 0 132 104'><defs><filter id='w' x='-25%' y='-40%' width='150%' height='180%'> <feTurbulence type='fractalNoise' baseFrequency='0.055' numOctaves='3' seed='13' result='n'/> <feDisplacementMap in='SourceGraphic' in2='n' scale='16' xChannelSelector='R' yChannelSelector='G'/> <feGaussianBlur stdDeviation='1.6'/></filter></defs><g filter='url(%23w)' opacity='0.5'><ellipse cx='92' cy='22' rx='30' ry='20' fill='%237ba36e'/><ellipse cx='118' cy='52' rx='24' ry='18' fill='%238fb5cc'/><ellipse cx='74' cy='54' rx='20' ry='15' fill='%23c9ae82'/><ellipse cx='122' cy='14' rx='18' ry='13' fill='%23a8c97f'/></g></svg>");background-repeat:no-repeat;background-position:top right;background-size:132px 104px}
+body[data-theme="2"] .tag{background:#e9efe9;color:#4f6353}
+
+/* 暗い配色のときは、淡色のチップと光輪だけ地の色に戻す */
+@media (prefers-color-scheme:dark){
+  body[data-theme="1"] .tag,body[data-theme="2"] .tag{background:var(--accent-soft);color:var(--accent)}
+  body[data-theme="1"] li.item.is-now .dot{box-shadow:0 0 0 5px var(--accent-soft)}
+}
+
+.cover h1 .sl{font-family:var(--font-num);font-weight:200;margin:0 .12em;color:var(--ink-2)}
+
 [hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -241,10 +291,12 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
 
   <header class="cover">
     <p class="eyebrow">Yuki's Birthday Trip</p>
-    <h1>水上と軽井沢、<br>ふたつの日。<small>和にひたる一日、余白をあるく一日</small></h1>
+    <h1>水上温泉<span class="sl">/</span>軽井沢旅行<small>和にひたる一日、余白をあるく一日</small></h1>
     <p class="dates">2026 . 09 . 05 SAT — 09 . 06 SUN</p>
     <p class="weather">今回は雨男の勝ちっぽい。楽しんでいきましょう。</p>
   </header>
+
+  <div class="ornament" aria-hidden="true"></div>
 
   <div class="status" id="status" role="status" aria-live="polite">
     <span class="label" id="statusLabel">Countdown</span>
