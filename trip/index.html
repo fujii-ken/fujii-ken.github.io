@@ -159,6 +159,13 @@ dl.facts div:last-child{border-bottom:0}
 dl.facts dt{flex:0 0 68px;color:var(--ink-3);font-size:12px;letter-spacing:.08em;padding-top:2px}
 dl.facts dd{margin:0;flex:1}
 dl.facts a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line)}
+svg.illus{
+  display:block;width:100%;height:auto;max-height:92px;margin:4px 0 16px;
+  color:var(--accent);opacity:.55
+}
+svg.illus *{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
+dl.facts.wide dt{flex:0 0 118px}
+p.note{margin:12px 0 0;font-size:12px;line-height:1.85;color:var(--ink-3);letter-spacing:.04em}
 .tag{
   display:inline-block;font-size:11px;letter-spacing:.1em;color:var(--accent);
   background:var(--accent-soft);padding:2px 9px;border-radius:2px;margin-top:8px
@@ -235,7 +242,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
     <p class="eyebrow">Itinerary</p>
     <h1>水上と軽井沢、<br>ふたつの日。<small>和にひたる一日、余白をあるく一日</small></h1>
     <p class="dates">2026 . 09 . 05 SAT — 09 . 06 SUN</p>
-    <p class="weather">両日とも雨の予報。行き先はぜんぶ屋根の下にしてあります。</p>
+    <p class="weather">今回は雨男の勝ちっぽい。楽しんでいきましょう。</p>
   </header>
 
   <div class="status" id="status" role="status" aria-live="polite">
@@ -256,7 +263,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
   <!-- ══ DAY 1 ══════════════════════════════════ -->
   <div id="day1" role="tabpanel" aria-labelledby="tab1">
     <p class="day-note">関越をのぼって、石造りの城をひとまわり。<br>日が暮れるころには温泉に浸かっています。</p>
-    <p class="day-meta">吉祥寺 → 水上温泉 ／ 約191km</p>
+    <p class="day-meta">吉祥寺 → 宝川温泉 ／ 約200km</p>
 
     <ol class="timeline">
       <li class="item" data-start="2026-09-05T10:00">
@@ -283,9 +290,13 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="谷川連峰の稜線">
+                <path d="M0 76H320"/>
+                <path d="M0 60L36 36L60 48L98 18L136 52L170 34L206 56L246 28L284 54L320 40"/>
+                <path d="M0 74L30 58L64 72L96 50L132 70L168 54L204 72L242 52L280 70L320 56"/>
+              </svg>
               <dl class="facts">
                 <div><dt>所在</dt><dd>関越自動車道 下り線（赤城IC〜沼田IC）</dd></div>
-                <div><dt>ひとこと</dt><dd>晴れていれば谷川連峰が見えるはずの場所。雨なら、あたたかいものを。</dd></div>
               </dl>
               <span class="tag">屋内</span>
             </div>
@@ -309,12 +320,22 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="石造りの城">
+                <path d="M0 76H320"/>
+                <path d="M118 76V38H206V76"/>
+                <path d="M118 38V30H130V38H142V30H154V38H166V30H178V38H190V30H202V38"/>
+                <path d="M78 76V48L98 24L118 48"/>
+                <path d="M206 56L224 36L242 56V76"/>
+                <path d="M98 24V12L114 17L98 22"/>
+                <path d="M136 76V58a8 8 0 0 1 16 0v18"/>
+                <path d="M168 48h12v14h-12z"/>
+                <path d="M216 62h10v12h-10z"/>
+              </svg>
               <dl class="facts">
                 <div><dt>住所</dt><dd>群馬県吾妻郡高山村中山5583-1</dd></div>
                 <div><dt>電話</dt><dd><a href="tel:0279632101">0279-63-2101</a></dd></div>
                 <div><dt>時間</dt><dd>9:00〜17:00（最終入場 16:30）</dd></div>
                 <div><dt>予約</dt><dd>不要 ／ 駐車場あり</dd></div>
-                <div><dt>雨の日は</dt><dd>広い屋外パークなので、城内・チャペル・ショップの屋根のある場所を中心に。無理はしません。</dd></div>
               </dl>
               <span class="tag">一部 屋内</span>
               <div class="links">
@@ -326,20 +347,38 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
         </div>
       </li>
 
-      <li class="item" data-start="2026-09-05T16:30" data-end="2026-09-05T18:00">
-        <span class="dot"></span><span class="time">16:30</span>
+      <li class="item" data-start="2026-09-05T16:45" data-end="2026-09-05T18:00">
+        <span class="dot"></span><span class="time">16:45</span>
         <div class="row">
-          <p class="name">水上温泉 着・チェックイン</p>
-          <p class="move">約35km・50分 ／ そのまま湯へ</p>
+          <p class="name">宝川温泉 汪泉閣 着・チェックイン</p>
+          <p class="move">約45km・約1時間 ／ そのまま湯へ</p>
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="山あいの露天風呂">
+                <path d="M0 52L38 26L74 52"/>
+                <path d="M246 52L282 28L320 52"/>
+                <ellipse cx="160" cy="68" rx="126" ry="14"/>
+                <path d="M92 64h56"/>
+                <path d="M162 70h58"/>
+                <path d="M116 75h44"/>
+                <path d="M96 80a10 6 0 0 1 20 0"/>
+                <path d="M140 82a12 7 0 0 1 24 0"/>
+                <path d="M188 80a10 6 0 0 1 20 0"/>
+                <path d="M132 54c-9-10 9-16 0-26"/>
+                <path d="M160 50c-9-10 9-16 0-26"/>
+                <path d="M188 54c-9-10 9-16 0-26"/>
+              </svg>
               <dl class="facts">
-                <div><dt>宿</dt><dd>（宿名を記入）</dd></div>
-                <div><dt>電話</dt><dd>（宿の電話番号を記入）</dd></div>
-                <div><dt>すごし方</dt><dd>温泉、部屋、なにもしない時間。</dd></div>
+                <div><dt>住所</dt><dd>群馬県利根郡みなかみ町藤原1899</dd></div>
+                <div><dt>電話</dt><dd><a href="tel:0278752611">0278-75-2611</a></dd></div>
+                <div><dt>道のり</dt><dd>関越道 水上ICから約18km・30分</dd></div>
               </dl>
               <span class="tag">屋内</span>
+              <div class="links">
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=宝川温泉 汪泉閣">地図をひらく</a>
+                <a href="tel:0278752611">電話する</a>
+              </div>
             </div>
           </details>
         </div>
@@ -362,38 +401,48 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
 
   <!-- ══ DAY 2 ══════════════════════════════════ -->
   <div id="day2" role="tabpanel" aria-labelledby="tab2" hidden>
-    <p class="day-note">星野エリアにまるごと半日。<br>テラスと、教会と、美術館。ぜんぶ歩ける距離にあります。</p>
-    <p class="day-meta">水上温泉 → 軽井沢 → 吉祥寺 ／ 約309km</p>
+    <p class="day-note">星野エリアにまるごと半日。<br>テラス、教会、美術館… 行きたい場所に柔軟に行けます。👍</p>
+    <p class="day-meta">宝川温泉 → 軽井沢 → 吉祥寺 ／ 約325km</p>
 
     <ol class="timeline">
       <li class="item" data-start="2026-09-06T09:30">
         <span class="dot"></span><span class="time">9:30</span>
         <div class="row">
           <p class="name">宿 出発</p>
-          <p class="move">to 月夜野IC ／ 約12km・20分</p>
+          <p class="move">to 月夜野IC ／ 約30km・40分</p>
         </div>
       </li>
 
-      <li class="item" data-start="2026-09-06T09:50">
-        <span class="dot"></span><span class="time">9:50</span>
+      <li class="item" data-start="2026-09-06T10:10">
+        <span class="dot"></span><span class="time">10:10</span>
         <div class="row">
           <p class="name">月夜野IC から関越道・上信越道へ</p>
           <p class="move">to 碓氷軽井沢IC ／ 約134km・105分</p>
         </div>
       </li>
 
-      <li class="item" data-start="2026-09-06T11:15" data-end="2026-09-06T13:15">
-        <span class="dot"></span><span class="time">11:15</span>
+      <li class="item" data-start="2026-09-06T11:35" data-end="2026-09-06T13:15">
+        <span class="dot"></span><span class="time">11:35</span>
         <div class="row">
           <p class="name">ハルニレテラス</p>
-          <p class="move">昼食とカフェ ／ 2時間</p>
+          <p class="move">昼食とカフェ ／ 1時間40分</p>
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="ハルニレの木とウッドデッキ">
+                <path d="M0 76H320"/>
+                <path d="M0 68H320"/>
+                <path d="M28 76V68M92 76V68M156 76V68M220 76V68M284 76V68"/>
+                <path d="M84 68V36M84 50L66 38M84 44L102 32"/>
+                <ellipse cx="84" cy="34" rx="32" ry="22"/>
+                <path d="M196 68V44M196 54L210 44"/>
+                <ellipse cx="196" cy="42" rx="24" ry="17"/>
+                <path d="M268 68V52"/>
+                <ellipse cx="268" cy="50" rx="16" ry="12"/>
+              </svg>
               <dl class="facts">
                 <div><dt>所在</dt><dd>長野県北佐久郡軽井沢町星野（星野エリア）</dd></div>
                 <div><dt>駐車場</dt><dd>あり</dd></div>
-                <div><dt>雨の日は</dt><dd>ウッドデッキに屋根があり、屋内の店も多い。傘をさす時間はほとんどありません。</dd></div>
               </dl>
               <span class="tag">雨に強い</span>
               <div class="links">
@@ -412,10 +461,19 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="重なるアーチと水">
+                <path d="M0 76H320"/>
+                <path d="M46 76V74A65 65 0 0 1 176 74V76"/>
+                <path d="M64 76V74A47 47 0 0 1 158 74V76"/>
+                <path d="M82 76V74A29 29 0 0 1 140 74V76"/>
+                <path d="M98 76V74A13 13 0 0 1 124 74V76"/>
+                <path d="M204 62h44"/>
+                <path d="M216 70h48"/>
+                <path d="M240 54h34"/>
+              </svg>
               <dl class="facts">
                 <div><dt>所在</dt><dd>長野県北佐久郡軽井沢町星野</dd></div>
                 <div><dt>見学</dt><dd>無料。ただし挙式が入っている時間帯は入れません（当日の状況次第）。</dd></div>
-                <div><dt>雨の日は</dt><dd>半地下の空間。雨のほうが、内を流れる水がきれいに見えます。</dd></div>
               </dl>
               <span class="tag">雨に強い</span>
               <div class="links">
@@ -434,6 +492,14 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
+              <svg class="illus" viewBox="0 0 320 88" role="img" aria-label="美術館とハートのオブジェ">
+                <path d="M0 76H320"/>
+                <path d="M30 76V40H230V76"/>
+                <path d="M18 40H242"/>
+                <path d="M62 40V76M94 40V76M126 40V76M158 40V76M190 40V76"/>
+                <path d="M272 66c-14-12-20-20-20-27a11 11 0 0 1 20-6a11 11 0 0 1 20 6c0 7-6 15-20 27z"/>
+                <path d="M272 66v10"/>
+              </svg>
               <dl class="facts">
                 <div><dt>住所</dt><dd>長野県北佐久郡軽井沢町軽井沢1151-5</dd></div>
                 <div><dt>電話</dt><dd><a href="tel:0267468691">0267-46-8691</a></dd></div>
@@ -471,20 +537,34 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
     </ol>
 
     <div class="card">
-      <h3>帰り道のこと</h3>
+      <h3>帰路について</h3>
       <p>日曜の夕方、関越の上り（高坂SA〜所沢IC）は16時から20時が混みます。上の到着時刻は、その渋滞を見込んだ数字です。あせらず。</p>
     </div>
 
     <div class="card">
-      <h3>もし晴れたら</h3>
-      <p>予報がはずれて曇りどまりなら、白糸の滝を足す案があります。ただし美術館の時間を削ることになるので、その場で相談。</p>
+      <h3>もし、晴れたら…</h3>
+      <p>もし雨が降ってなかったら白糸の滝に行くのもあり！</p>
+      <details class="spot">
+        <summary>ほかの候補を見る</summary>
+        <div class="body">
+          <dl class="facts wide">
+            <div><dt>白糸の滝</dt><dd>屋外。白糸ハイランドウェイを通って向かいます</dd></div>
+            <div><dt>雲場池</dt><dd>屋外。ひとまわり20〜30分の散策路</dd></div>
+            <div><dt>旧軽井沢銀座</dt><dd>屋外の商店街。歩きながら店をひやかす</dd></div>
+            <div><dt>プリンスショッピングプラザ</dt><dd>屋外中心の大きなモール。帰りのICに近い</dd></div>
+            <div><dt>星野温泉 トンボの湯</dt><dd>屋内。ハルニレテラスと同じ星野エリア</dd></div>
+            <div><dt>聖パウロカトリック教会</dt><dd>屋内。旧軽井沢の木造の教会</dd></div>
+          </dl>
+          <p class="note">どれも営業時間と料金は未確認。行くと決めた時点で調べます。</p>
+        </div>
+      </details>
     </div>
   </div>
 
   <!-- ══ 移動 ══════════════════════════════════ -->
   <section class="block">
     <h2>Route</h2>
-    <p class="ja">道のこと</p>
+    <p class="ja">経路について</p>
     <div class="card">
       <h3>使うインターチェンジ</h3>
       <p>
@@ -495,7 +575,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
     </div>
     <div class="card">
       <h3>ガソリン</h3>
-      <p>二日間の総走行距離は約500km。満タンで出発して、帰り道でもう一度入れます。</p>
+      <p>二日間の総走行距離は約500km！満タンで出発して、帰り道でも給油します。</p>
     </div>
     <div class="card">
       <h3>下道は使いません</h3>
@@ -526,7 +606,6 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
       <h3>そのほか</h3>
       <label class="check"><input type="checkbox" data-k="p7"><span>ETCカード<small>車載器に挿してあるか、期限は切れていないか</small></span></label>
       <label class="check"><input type="checkbox" data-k="p8"><span>現金<small>現金しか使えない場所があります</small></span></label>
-      <label class="check"><input type="checkbox" data-k="p9"><span>ロックハート城の割引券<small>印刷か、スマートフォンの画面で</small></span></label>
       <label class="check"><input type="checkbox" data-k="p10"><span>常備薬</span></label>
       <label class="check"><input type="checkbox" data-k="p11"><span>モバイルバッテリー</span></label>
     </div>
@@ -538,10 +617,9 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
   <section class="block">
     <h2>Contact</h2>
     <p class="ja">連絡先</p>
-    <a class="contact blank" href="#"><span>水上温泉の宿</span><span class="num">（記入）</span></a>
+    <a class="contact" href="tel:0278752611"><span>宝川温泉 汪泉閣</span><span class="num">0278-75-2611</span></a>
     <a class="contact" href="tel:0279632101"><span>ロックハート城</span><span class="num">0279-63-2101</span></a>
     <a class="contact" href="tel:0267468691"><span>軽井沢ニューアートミュージアム</span><span class="num">0267-46-8691</span></a>
-    <a class="contact blank" href="#"><span>自動車保険 事故受付</span><span class="num">（記入）</span></a>
   </section>
 
   <footer>
