@@ -164,7 +164,8 @@ svg.illus{
   color:var(--accent);opacity:.55
 }
 svg.illus *{fill:none;stroke:currentColor;stroke-width:1;stroke-linecap:round;stroke-linejoin:round}
-dl.facts.wide dt{flex:0 0 118px}
+dl.facts.stack div{display:block;padding:9px 0}
+dl.facts.stack dt{margin-bottom:1px;letter-spacing:.12em}
 p.note{margin:12px 0 0;font-size:12px;line-height:1.85;color:var(--ink-3);letter-spacing:.04em}
 .tag{
   display:inline-block;font-size:11px;letter-spacing:.1em;color:var(--accent);
@@ -239,7 +240,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
 <div class="wrap">
 
   <header class="cover">
-    <p class="eyebrow">Itinerary</p>
+    <p class="eyebrow">Yuki's Birthday Trip</p>
     <h1>水上と軽井沢、<br>ふたつの日。<small>和にひたる一日、余白をあるく一日</small></h1>
     <p class="dates">2026 . 09 . 05 SAT — 09 . 06 SUN</p>
     <p class="weather">今回は雨男の勝ちっぽい。楽しんでいきましょう。</p>
@@ -295,8 +296,14 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
                 <path d="M0 60L36 36L60 48L98 18L136 52L170 34L206 56L246 28L284 54L320 40"/>
                 <path d="M0 74L30 58L64 72L96 50L132 70L168 54L204 72L242 52L280 70L320 56"/>
               </svg>
-              <dl class="facts">
+              <dl class="facts stack">
                 <div><dt>所在</dt><dd>関越自動車道 下り線（赤城IC〜沼田IC）</dd></div>
+                <div><dt>あかぎ庵</dt><dd>レストラン。11:00〜20:00（L.O.19:30）。看板は水沢うどん</dd></div>
+                <div><dt>あかぎ食堂</dt><dd>フードコート。24時間。うどん・そば・丼もの。百日まいたけの天ぷらやもつ煮丼も</dd></div>
+                <div><dt>らーめん ブー次郎</dt><dd>6:00〜21:00。群馬県産の豚を使ったみそ豚丼が名物</dd></div>
+                <div><dt>おにぎり工房</dt><dd>6:00〜18:00。ブー次郎のおにぎり</dd></div>
+                <div><dt>売店</dt><dd>24時間</dd></div>
+                <div><dt>おすすめ</dt><dd>あかぎ庵の水沢うどん。群馬の名物で、12:00に着けばもう開いています</dd></div>
               </dl>
               <span class="tag">屋内</span>
             </div>
@@ -312,11 +319,11 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
         </div>
       </li>
 
-      <li class="item" data-start="2026-09-05T13:40" data-end="2026-09-05T15:40">
+      <li class="item" data-start="2026-09-05T13:40" data-end="2026-09-05T15:10">
         <span class="dot"></span><span class="time">13:40</span>
         <div class="row">
           <p class="name">ロックハート城</p>
-          <p class="move">滞在 2時間 ／ 15:40 出発</p>
+          <p class="move">滞在 1時間30分 ／ 15:10 出発</p>
           <details class="spot">
             <summary>DETAIL</summary>
             <div class="body">
@@ -347,8 +354,8 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
         </div>
       </li>
 
-      <li class="item" data-start="2026-09-05T16:45" data-end="2026-09-05T18:00">
-        <span class="dot"></span><span class="time">16:45</span>
+      <li class="item" data-start="2026-09-05T16:15" data-end="2026-09-05T18:00">
+        <span class="dot"></span><span class="time">16:15</span>
         <div class="row">
           <p class="name">宝川温泉 汪泉閣 着・チェックイン</p>
           <p class="move">約45km・約1時間 ／ そのまま湯へ</p>
@@ -395,7 +402,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
 
     <div class="card">
       <h3>雨が強かったら</h3>
-      <p>ロックハート城を1時間半に切りあげて、16:00には宿に入ります。屋外のテーマパークなので、そこはあっさり判断します。</p>
+      <p>城は屋外のテーマパークです。強く降ってきたら城内・チャペル・ショップだけにして、さらに早めに宿へ。無理はしません。</p>
     </div>
   </div>
 
@@ -547,7 +554,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
       <details class="spot">
         <summary>ほかの候補を見る</summary>
         <div class="body">
-          <dl class="facts wide">
+          <dl class="facts stack">
             <div><dt>白糸の滝</dt><dd>屋外。白糸ハイランドウェイを通って向かいます</dd></div>
             <div><dt>雲場池</dt><dd>屋外。ひとまわり20〜30分の散策路</dd></div>
             <div><dt>旧軽井沢銀座</dt><dd>屋外の商店街。歩きながら店をひやかす</dd></div>
@@ -639,6 +646,12 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
 
   function parse(s){ return new Date(s + ":00" + JST); }
 
+  // 端末のタイムゾーンに関わらず、日本時間での日付を返す
+  function jstDate(d){
+    try { return d.toLocaleDateString("en-CA", { timeZone: "Asia/Tokyo" }); }
+    catch (e) { return new Date(d.getTime() + 9*3600000).toISOString().slice(0, 10); }
+  }
+
   /* ── 日タブ ───────────────────────── */
   function selectDay(i, scroll){
     tabs.forEach(function(t, n){ t.setAttribute("aria-selected", n === i ? "true" : "false"); });
@@ -655,6 +668,7 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
   /* ── いま／つぎ ───────────────────── */
   var items = [].slice.call(document.querySelectorAll("li.item")).map(function(el){
     return { el: el, start: parse(el.dataset.start), end: el.dataset.end ? parse(el.dataset.end) : null,
+             at: el.dataset.start.slice(11).replace(/^0/, ""),
              name: el.querySelector(".name").textContent.trim() };
   });
   // 終了時刻がない項目は、次の項目の開始時刻までとみなす
@@ -668,10 +682,6 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
   var elLabel = document.getElementById("statusLabel");
   var elMain  = document.getElementById("statusMain");
   var elSub   = document.getElementById("statusSub");
-
-  function hhmm(d){
-    return String(d.getHours()).padStart(2,"0") + ":" + String(d.getMinutes()).padStart(2,"0");
-  }
 
   function tick(){
     var now = new Date();
@@ -690,24 +700,19 @@ footer p{margin:0;font-size:12px;color:var(--ink-3);letter-spacing:.16em;line-he
       elMain.textContent = days > 0 ? "あと " + days + " 日" : "まもなく出発";
       elSub.textContent = "9月5日（土）10:00 吉祥寺 出発";
     } else if (now > TRIP_END){
-      elLabel.textContent = "Thank you";
-      elMain.textContent = "おつかれさまでした";
-      elSub.textContent = "またどこかへ。";
-    } else if (current){
-      elLabel.textContent = "Now";
-      elMain.textContent = current.name;
-      elSub.textContent = next ? "つぎは " + hhmm(next.start) + "　" + next.name : "";
-    } else if (next){
-      elLabel.textContent = "Next";
-      elMain.textContent = next.name;
-      elSub.textContent = hhmm(next.start) + " から";
+      elLabel.textContent = "Afterglow";
+      elMain.textContent = "余韻は続くよどこまでも";
+      elSub.textContent = "";
+    } else {
+      elLabel.textContent = "Today";
+      elMain.textContent = "満喫中";
+      var line = current ? "いま　" + current.name : "";
+      if (next) line += (line ? "　／　" : "") + "つぎ " + next.at + "　" + next.name;
+      elSub.textContent = line;
     }
 
     // 当日は自動でその日のタブを開く（手動で切り替えたあとは尊重する）
-    if (!body.dataset.userPicked){
-      var d = now.getFullYear() + "-" + String(now.getMonth()+1).padStart(2,"0") + "-" + String(now.getDate()).padStart(2,"0");
-      if (d === "2026-09-06") selectDay(1, false);
-    }
+    if (!body.dataset.userPicked && jstDate(now) === "2026-09-06") selectDay(1, false);
   }
   tabs.forEach(function(t){ t.addEventListener("click", function(){ body.dataset.userPicked = "1"; }); });
 
